@@ -32,4 +32,12 @@ class CalendarApiController extends Controller
         $calendar->delete();
         return response()->json('deleted');
     }
+
+    // calendar event 的更新
+    public function calendarEventUpdate(Request $request)
+    {
+        $calendar = Calendar::where('start_date', $request->start_date)->where('title', $request->title)->first();
+        $calendar->update($request->all());
+        return response()->json($calendar);
+    }
 }
