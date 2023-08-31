@@ -28,4 +28,21 @@ class Calendar extends Model
     {
         return $this->belongsTo(Member::class);
     }
+
+    public static function getEventsInCalendarFormatForMember($memberId)
+    {
+        $events = self::where('member_id', $memberId)->orderBy('start_date')->get();
+
+        $result = [];
+
+        foreach ($events as $event) {
+            if (!isset($result[$event->start_date])) {
+                $result[$event->start_date] = [];
+            }
+
+            $result[$event->start_date][] = $event->title;
+        }
+
+        return $result;
+    }
 }

@@ -11,12 +11,10 @@ use App\Models\Member;
 class CalendarApiController extends Controller
 {
     // calendar + member
-    public function calendarMember(Request $request, $id)
+    public function calendarMember(Request $request, $memberId)
     {
 
-        $member = Member::find($id);
-        $calendar = $member->calendars;
-
-        return response()->json(['data' => $calendar]);
+        $calendarEvents = Calendar::getEventsInCalendarFormatForMember($memberId);
+        return response()->json($calendarEvents);
     }
 }
