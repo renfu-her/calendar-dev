@@ -17,4 +17,11 @@ class CalendarApiController extends Controller
         $calendarEvents = Calendar::getEventsInCalendarFormatForMember($memberId);
         return response()->json($calendarEvents);
     }
+
+    // calendar event 的寫入
+    public function calendarEvent(Request $request)
+    {
+        $calendar = Calendar::create($request->all());
+        return response()->json($calendar);
+    }
 }
