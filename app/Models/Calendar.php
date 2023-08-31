@@ -23,4 +23,9 @@ class Calendar extends Model
         'is_active',
         'member_id',
     ];
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
 }

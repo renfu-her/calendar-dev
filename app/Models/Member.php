@@ -23,4 +23,9 @@ class Member extends Model
         'last_login_at',
         'is_active',
     ];
+
+    public function calendars()
+    {
+        return $this->hasMany(Calendar::class);
+    }
 }
