@@ -40,7 +40,10 @@ class Calendar extends Model
                 $result[$event->start_date] = [];
             }
 
-            $result[$event->start_date][] = $event->title;
+            $result[$event->start_date][] = [
+                'title' => $event->title,
+                'is_active' => $event->is_active,
+            ];
         }
 
         return $result;
