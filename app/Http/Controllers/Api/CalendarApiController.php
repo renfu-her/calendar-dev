@@ -37,7 +37,7 @@ class CalendarApiController extends Controller
     public function calendarEventUpdate(Request $request)
     {
         $calendar = Calendar::where('start_date', $request->start_date)->where('title', $request->title)->first();
-        $calendar->update(['title' => $request->update_title]);
+        $calendar->update(['title' => $request->update_title, 'is_active' => $request->is_active]);
         return response()->json($calendar);
     }
 }
