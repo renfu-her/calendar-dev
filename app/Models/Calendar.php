@@ -31,7 +31,7 @@ class Calendar extends Model
 
     public static function getEventsInCalendarFormatForMember($memberId)
     {
-        $events = self::where('member_id', $memberId)->orderBy('start_date')->get();
+        $events = self::where('member_id', $memberId)->orderByDesc('created_at')->get();
 
         $result = [];
 
