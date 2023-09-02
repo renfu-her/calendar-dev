@@ -12,7 +12,8 @@ route::post('/calendar/events', [CalendarApiController::class, 'calendarEvent'])
 route::delete('/calendar/delete', [CalendarApiController::class, 'calendarEventDelete']);
 route::post('/calendar/update', [CalendarApiController::class, 'calendarEventUpdate']);
 
-route::get('/login', [LoginAdminController::class, 'login']);
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
 route::group(['middleware' => 'auth:api'], function () {
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'user']);
