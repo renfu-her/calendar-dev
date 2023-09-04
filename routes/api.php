@@ -11,6 +11,7 @@ route::get('/calendar/member/{id}', [CalendarApiController::class, 'calendarMemb
 route::post('/calendar/events', [CalendarApiController::class, 'calendarEvent']);
 route::delete('/calendar/delete', [CalendarApiController::class, 'calendarEventDelete']);
 route::post('/calendar/update', [CalendarApiController::class, 'calendarEventUpdate']);
+route::post('/calendar/updateIsActive', [CalendarApiController::class, 'calendarUpdateIsActive']);
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);

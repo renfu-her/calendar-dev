@@ -40,4 +40,12 @@ class CalendarApiController extends Controller
         $calendar->update(['title' => $request->update_title, 'is_active' => $request->is_active]);
         return response()->json($calendar);
     }
+
+    // calendar update isActive
+    public function calendarUpdateIsActive(Request $request)
+    {
+        $calendar = Calendar::where('start_date', $request->start_date)->where('title', $request->title)->first();
+        $calendar->update(['is_active' => $request->is_active]);
+        return response()->json($calendar);
+    }
 }
